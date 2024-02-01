@@ -1,17 +1,20 @@
 import math
 
+# phép nhân 2 mảng A,B
 def phep_nhan_mang(A,B,t,W):
     C = [0]*(2*t)
 
     def dao_nguoc_mang(arr):
         return arr[::-1]
 
+    # hàm chuyển UV sang U và V
     def chuyen_sang_U_V(number, W):
-        binary_string = format(number, f'0{2*W}b')
-        U = int(binary_string[:W], 2)
+        binary_string = format(number, f'0{2*W}b') # đổi giá trị thành chuỗi string dài 2W với giá trị là các bit 01
+        U = int(binary_string[:W], 2) # gán U và V là int có giá trị theo W bit sử dụng hệ cơ số 2
         V = int(binary_string[W:], 2)
         return U, V
     
+    # đảo mảng
     a=dao_nguoc_mang(A)
     b=dao_nguoc_mang(B)
 
@@ -41,5 +44,3 @@ def phep_nhan_mang(A,B,t,W):
 
 #x = phep_nhan_mang(a,b,4,8)
 #print(x)
-   
-
