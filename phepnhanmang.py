@@ -2,18 +2,19 @@ import math
 
 def phep_nhan_mang(A,B,t,W):
     C = [0]*(2*t)
-    a=dao_nguoc_mang(A)
-    b=dao_nguoc_mang(B)
 
     def dao_nguoc_mang(arr):
         return arr[::-1]
 
-    def cat_so(n, bits):
-        num_bits = 1 << bits
-        high_bits = n >> bits
-        low_bits = n & (num_bits - 1)
-        return high_bits, low_bits
+    def chuyen_sang_U_V(number, W):
+        binary_string = format(number, f'0{2*W}b')
+        U = int(binary_string[:W], 2)
+        V = int(binary_string[W:], 2)
+        return U, V
     
+    a=dao_nguoc_mang(A)
+    b=dao_nguoc_mang(B)
+
     # Bước 1
     for i in range(0,t,1):
         C[i]=0
@@ -26,9 +27,8 @@ def phep_nhan_mang(A,B,t,W):
         # Bước 2.2
         for j in range(0,t,1):
             UV = C[i+j] + a[i]*b[j] + U
-            U,V = cat_so(UV,W)
+            U,V = chuyen_sang_U_V(UV,W)
             C[i+j]=V
-            print(U,V,UV)
 
         # Bước 2.3
         C[i+t]=U
@@ -41,6 +41,5 @@ def phep_nhan_mang(A,B,t,W):
 
 #x = phep_nhan_mang(a,b,4,8)
 #print(x)
-        
-
+   
 
