@@ -1,6 +1,8 @@
 import random
 import math
 
+ # dùng định lý fermat kiểm tra n có phải số nguyên tố 
+ # với cơ sở là a hay ko :: a^(n-1) mod n đồng dư 1 => n là nguyên tố
 def fermat_test(n, t):
     if n <= 1:
         return False
@@ -14,6 +16,7 @@ def fermat_test(n, t):
             return False
         return True
     '''
+    # hàm tính a^b mod m
     def modulo_power(a, b, m):
     if a % m == 0:
         return 0 
@@ -26,6 +29,8 @@ def fermat_test(n, t):
         a = (a * a) % m
     return result
     '''
+    
+     # kiểm tra n với t lần thử
     for _ in range(t):
         a = random.randint(2, n-2)
         if not fermat_check(a, n):
@@ -120,4 +125,3 @@ prime_numbers = list_primes_in_range(start_limit, end_limit, t)
 
 # In kết quả
 print(f"Các số nguyên tố trong khoảng từ {start_limit} đến {end_limit} là: {prime_numbers}")
-
